@@ -1,34 +1,46 @@
 import Deck from "./components/Deck/Deck";
-import Card from "./components/Card/Card";
 import {useState} from "react";
 
 function Game() {
-    const [cards, setCards] = useState([]);
-
     const suits = ["spades", "clubs", "hearts", "diamonds"];
     const ranks = ["7", "8", "9", "10", "J", "Q", "K", "A"];
 
-    function getRandomElement(array) {
-        return array[Math.floor(Math.random() * array.length)];
+    function getAllPossibleCards() {
+        const array = [];
+        for (let suit of suits) {
+            for (let rank of ranks) {
+                array.push({"suit": suit, "rank": rank});
+            }
+        }
+        return array;
     }
 
-    function getRandomCard() {
-        const randomSuit = getRandomElement(suits);
-        const randomRank = getRandomElement(ranks);
-        return <Card suit={randomSuit} rank={randomRank}/>
+    const [possibleCards, setPossibleCards] = useState(getAllPossibleCards);
+    const [dealtCards, setDealtCards] = useState([]);
+
+    function getRandomPossibleCard() {
+        const card = possibleCards[Math.floor(Math.random() * possibleCards.length)];
+        let newPossibleCards = possibleCards.filter((value) => {
+            return value !== card;
+        })
+        setPossibleCards(newPossibleCards);
+        return card;
     }
 
-    function addCard() {
-        const card = getRandomCard();
-        const cardsCopy = cards.slice();
+    function dealCard() {
+        if (dealtCards.length === suits.length * ranks.length) {
+            return;
+        }
+        let card = getRandomPossibleCard();
+        const cardsCopy = dealtCards.slice();
         cardsCopy.push(card);
-        setCards(cardsCopy);
+        setDealtCards(cardsCopy);
     }
 
     return (
         <div className={"game"}>
-            <Deck cards={cards}/>
-            <button onClick={addCard}>New card</button>
+            <Deck cards={dealtCards}/>
+            <button onClick={dealCard}>Deal card</button>
         </div>
     );
 }
