@@ -4,8 +4,16 @@ function Game() {
     const suits = ["spades", "clubs", "hearts", "diamonds"];
     const ranks = ["7", "8", "9", "10", "J", "Q", "K", "A"];
 
+    function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    const randomSuit = getRandomElement(suits);
+    const randomRank = getRandomElement(ranks);
+
+
     return (
-        <Card rank={ranks[0]} suit={suits[0]}/>
+        <Card rank={randomRank} suit={randomSuit}/>
     );
 }
 

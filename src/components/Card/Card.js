@@ -10,7 +10,7 @@ function Card({rank, suit}) {
     }
 
     return (
-        <div className={"card"}>
+        <div className={"card " + suit}>
             <span className={"card-top"}>{rank + symbols[suit]}</span>
             <span className={"card-middle"}>{rank}</span>
             <span className={"card-bottom"}>{rank + symbols[suit]}</span>
