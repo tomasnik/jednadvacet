@@ -50,7 +50,9 @@ function Game() {
     }
 
     function stand() {
-        setStatus("stand");
+        if (status === "playing") {
+            setStatus("stand");
+        }
     }
 
     return (
