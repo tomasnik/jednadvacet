@@ -7,22 +7,27 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
 
-.card-top {
+.card > span {
     position: absolute;
+}
+
+.card-top {
     top: 5px;
     left: 5px;
 }
 
 .card-middle {
-    position: absolute;
     font-size: 24pt;
     top: 40%;
     left: 40%;
 }
 
 .card-bottom {
-    position: absolute;
     right: 5px;
     bottom: 5px;
     transform: rotate(180deg);
+}
+
+.card.hearts, .card.diamonds {
+    color: red;
 }
