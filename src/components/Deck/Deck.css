@@ -5,6 +5,6 @@
     place-content: center;
     gap: 10px;
     width: 50%;
-    height: 200px;
+    min-height: 200px;
     margin: auto;
 }
