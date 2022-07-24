@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-button {
+.game-button {
     width: 130px;
     height: 200px;
     border: none;
@@ -23,4 +23,8 @@ button {
 
 .stand-button {
     background-image: url("../public/standbutton.svg");
+}
+
+.end-screen {
+    text-align: center;
 }

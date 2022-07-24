@@ -1,6 +1,7 @@
 import Deck from "./components/Deck/Deck";
 import {useEffect, useState} from "react";
 import "./Game.css";
+import EndScreen from "./components/EndScreen/EndScreen";
 
 function Game() {
     const suits = ["spades", "clubs", "hearts", "diamonds"];
@@ -56,14 +57,26 @@ function Game() {
         }
     }
 
+    function reset() {
+        setPossibleCards(getAllPossibleCards);
+        setDealtCards([]);
+        setScore(0);
+        setStatus("playing");
+    }
+
+    if (status !== "playing") {
+        return (
+            <EndScreen status={status} reset={reset}/>
+        );
+    }
+
     return (
         <div className={"game"}>
-            <h1>{status}</h1>
-            <h2>{score}</h2>
+            <h1>{score}</h1>
             <Deck cards={dealtCards}/>
             <div className={"game-buttons"}>
-                <button className={"deal-button"} onClick={dealCard}></button>
-                <button className={"stand-button"} onClick={stand}></button>
+                <button className={"game-button deal-button"} onClick={dealCard}></button>
+                <button className={"game-button stand-button"} onClick={stand}></button>
             </div>
         </div>
     );
