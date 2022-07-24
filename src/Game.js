@@ -1,5 +1,6 @@
 import Deck from "./components/Deck/Deck";
 import {useEffect, useState} from "react";
+import "./Game.css";
 
 function Game() {
     const suits = ["spades", "clubs", "hearts", "diamonds"];
@@ -57,11 +58,13 @@ function Game() {
 
     return (
         <div className={"game"}>
+            <h1>{status}</h1>
+            <h2>{score}</h2>
             <Deck cards={dealtCards}/>
-            <button onClick={dealCard}>Hit</button>
-            <button onClick={stand}>Stand</button>
-            <p>{score}</p>
-            <p>{status}</p>
+            <div className={"game-buttons"}>
+                <button className={"deal-button"} onClick={dealCard}></button>
+                <button className={"stand-button"} onClick={stand}></button>
+            </div>
         </div>
     );
 }

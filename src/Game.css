@@ -1,0 +1,26 @@
+.game {
+    text-align: center;
+}
+
+button {
+    width: 130px;
+    height: 200px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.game-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+}
+
+.deal-button {
+    background-image: url("../public/dealbutton.svg");
+}
+
+.stand-button {
+    background-image: url("../public/standbutton.svg");
+}
